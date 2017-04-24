@@ -32,7 +32,7 @@
     SELECT * FROM user WHERE id = #{id:INTEGER}
     </select>
 
-    <select id="findUserByUsername" parameterType="java.lang.String" resultType="bean.User">
+    <select id="findUserByUsername" parameterType="java.lang.String" resultType="User"><!--别名-->
         SELECT * FROM user WHERE username LIKE '%${value}%'<!--parameterType传输单个简单类型值,${}括号中只能是value。-->
     </select>
 

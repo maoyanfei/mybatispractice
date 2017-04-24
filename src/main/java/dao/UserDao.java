@@ -34,8 +34,10 @@ public interface UserDao {
 
     /**
      * 根据用户姓名查询用户信息
+     *
      * @param username
      * @return
      */
     public List<User> findUserByUsername(String username);
+
 }

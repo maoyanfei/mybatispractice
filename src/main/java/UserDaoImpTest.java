@@ -46,5 +46,22 @@ public class UserDaoImpTest {
         System.out.println(userList.get(0).getUsername());
     }
 
+    public void testInsertUser() throws IOException {
+        if (sqlSessionFactory == null) {
+            setUp();
+        }
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        User user = new User();
+        user.setUsername("朱小明");
+        user.setPassword("朱大明");
+        userDao.insertUser(user);
+        sqlSession.commit();
+    }
+
+    public void testtypeAliases(){
+
+    }
+
 
 }

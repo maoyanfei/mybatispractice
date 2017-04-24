@@ -16,7 +16,6 @@ public class Main {
 //        userDao.deleteUserById();
 //        userDao.updateUserById();
 
-
         UserDaoImpTest userDaoImpTest = new UserDaoImpTest();
         try {
             userDaoImpTest.testFindUserByUsername();
