@@ -29,7 +29,6 @@
         <typeAlias alias="User" type="bean,User"/>
     </typeAliases>
 -->
-
     <!-- 和spring整合后 environments配置将废除-->
     <environments default="development">
         <environment id="development">
@@ -47,7 +46,7 @@
     </environments>
 
     <mappers><!--mapper映射器-->
-        <mapper resource="bean/User.xml"/>
+        <mapper resource="dao/UserDao.xml"/>
     </mappers>
 
 </configuration>
