@@ -19,6 +19,7 @@ public class Conn {
         String configPath = "Configuration.xml";
         InputStream inputStream = Resources.getResourceAsStream(configPath);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        
         return sqlSessionFactory;
     }
 }
