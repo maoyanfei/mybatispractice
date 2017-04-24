@@ -1,4 +1,4 @@
-import dao.UserDao;
+import dao.UserMapper;
 
 /**
  * @Author Nuc YongGuang Ji
@@ -6,7 +6,9 @@ import dao.UserDao;
  */
 public class Main {
     public static void main(String[] args) {
-        UserDao userDao = new UserDao();
-        userDao.getSqlSessionFactory();
+        UserMapper userDao = new UserMapper();
+//        userDao.findUserById();
+//        userDao.findUserByUsername();
+        userDao.insertUser();
     }
 }
