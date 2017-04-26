@@ -27,6 +27,8 @@
 
     <typeAliases>
         <typeAlias alias="User" type="bean.User"/>
+        <typeAlias alias="Customer" type="bean.Customer"/>
+        <!--<package name="bean"></package>-->
     </typeAliases>
 
     <!-- 和spring整合后 environments配置将废除-->
@@ -49,6 +51,7 @@
 
     <mappers><!--mapper映射器-->
         <mapper resource="dao/UserDao.xml"/>
+        <mapper resource="dao/CustomerDao.xml"/>
     </mappers>
 
 </configuration>

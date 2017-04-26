@@ -1,5 +1,6 @@
 package dao;
 
+import bean.Customer;
 import bean.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -43,6 +44,10 @@ public class UserDaoImp implements UserDao {
     }
 
     public List<User> findUserByUsername(String username) {
+        return null;
+    }
+
+    public List<User> findUserByCustomer(Customer customer) {
         return null;
     }
 }

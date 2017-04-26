@@ -1,5 +1,6 @@
 package dao;
 
+import bean.Customer;
 import bean.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -42,6 +43,34 @@ public class UserDaoTest {
 
         //释放资源
         sqlSession.close();
+    }
+
+    @Test
+    public void findUserByCustomer() throws IOException {
+
+        //Mybatis 配置文件
+        String resource = "Configuration.xml";
+
+        //得到配置文件流
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        //创建会话工厂,传入Mybatis的配置文件信息
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //通过工厂得到SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+
+        Customer customer = new Customer();
+        User user = new User();
+        user.setUsername("李亚男");
+        user.setPassword("nanyali");
+//        user.setUsername("小");
+//        user.setPassword("朱大明");
+        customer.setUser(user);
+
+        userDao.findUserByCustomer(customer);
     }
 
 }

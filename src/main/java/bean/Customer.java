@@ -1,25 +1,15 @@
 package bean;
 
-import java.io.Serializable;
-
 /**
  * @Author Nuc YongGuang Ji
- * Created by JiYongGuang on 2017/4/24.
+ * Created by JiYongGuang on 2017/4/25.
  */
-public class User implements Serializable {
+public class Customer {
 
     private int id;
     private String username;
     private String password;
-
-    public User(int id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
-
-    public User() {
-    }
+    private User user;
 
     /**
      * Getter for property 'id'.
@@ -73,5 +63,33 @@ public class User implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * Getter for property 'user'.
+     *
+     * @return Value for property 'user'.
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Setter for property 'user'.
+     *
+     * @param user Value to set for property 'user'.
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", user=" + user +
+                '}';
     }
 }

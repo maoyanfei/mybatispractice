@@ -59,7 +59,7 @@ public class UserDaoImpTest {
         sqlSession.commit();
     }
 
-    public void testtypeAliases(){
+    public void testtypeAliases() {
 
     }
 

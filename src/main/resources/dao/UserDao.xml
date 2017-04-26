@@ -32,8 +32,13 @@
     SELECT * FROM user WHERE id = #{id:INTEGER}
     </select>
 
-    <select id="findUserByUsername" parameterType="java.lang.String" resultType="User"><!--别名-->
-        SELECT * FROM user WHERE username LIKE '%${value}%'<!--parameterType传输单个简单类型值,${}括号中只能是value。-->
+    <!--引用别名-->                      <!--这里的resultType的返回类型为查询语句的每一条记录的返回类型-->
+    <select id="findUserByUsername" parameterType="java.lang.String" resultType="User">
+        SELECT * FROM user WHERE username LIKE '%${value}%'<!--parameterType传输单个简单类型值,${}的sql语句拼接的方式括号中只能是value。-->
+    </select>
+
+    <select id="findUserByCustomer" parameterType="bean.Customer" resultType="User">
+        SELECT * FROM USER WHERE username LIKE '%${user.username}%' AND password = #{user.password}
     </select>
 
     <!--自增主键返回-->

@@ -1,5 +1,6 @@
 package dao;
 
+import bean.Customer;
 import bean.User;
 
 import java.util.List;
@@ -39,5 +40,12 @@ public interface UserDao {
      * @return
      */
     public List<User> findUserByUsername(String username);
+
+    /**
+     * 通过顾客对象查询用户信息
+     * @param customer
+     * @return
+     */
+    public List<User> findUserByCustomer(Customer customer);
 
 }

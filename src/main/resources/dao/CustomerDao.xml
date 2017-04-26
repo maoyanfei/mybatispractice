@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.CustomerDao">
+    <!--用到了User别名-->
+    <resultMap type="Customer" id="UserResult">
+        <!--注意这里column属性的字段名,和sql语句查询列定义的别名一致才可以自定映射比配注入-->
+        <id column="id_" jdbcType="INTEGER" property="id"/>
+        <result column="username_" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+
+    <sql id="query_Customer_where">
+        <if test="customer.user!=null">
+            <if test="customer.user.username!=null and customer.user.username!=''">
+                AND username LIKE '%${customer.user.username}%'
+            </if>
+            <if test="customer.user.password!=null and customer.user.password!=''">
+                AND password = #{customer.user.password}
+            </if>
+        </if>
+    </sql>
+
+    <select id="findCustomerById" parameterType="int" resultMap="UserResult">
+        SELECT id id_,username username_ FROM customer where id = #{id}
+    </select>
+
+    <select id="findCustomerByCustomer" parameterType="Customer" resultType="Customer">
+        SELECT * FROM customer
+        <where><!-- where 1=1 -->
+            <if test="customer.user != null"><!--用到java属性进行判断的地方,全名称引用避免参数找不到错误-->
+                <if test="customer.user.password != null and customer.user.password != ''">
+                    AND password = #{customer.user.password}
+                </if>
+                <if test="customer.user.username !=null and customer.user.username !=''">
+                    AND username LIKE '%${customer.user.username}%'<!--自动忽略第一个通过条件判断接入的sql语句的 'and' 拼接前缀。-->
+                </if>
+            </if>
+        </where>
+    </select>
+<!--
+    <select id="findCustomerByCustomer" parameterType="Customer" resultType="Customer">
+        SELECT * FROM customer
+        <where>
+            <include refid="query_Customer_where"/>
+               // <include refid="query_Customer_where"></include> ====== 标签体中不含内容的标签可直接使用单标签关闭
+        </where>
+    </select>
+-->
+</mapper>
