@@ -7,11 +7,30 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author Nuc YongGuang Ji
  * Created by JiYongGuang on 2017/4/25.
  */
 public class CustomerDaoTest {
+    @Test
+    public void findCustomerByIdList() throws Exception {
+        SqlSessionFactory sqlSessionFactory = Conn.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        CustomerDao customerDao = sqlSession.getMapper(CustomerDao.class);
+
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(5);
+
+        customerDao.findCustomerByIdList(list);
+    }
+
     @Test
     public void findCustomerByUser() throws Exception {
 
@@ -28,7 +47,6 @@ public class CustomerDaoTest {
 
         customer.setUser(user);
         Customer customerVariable = customerDao.findCustomerByCustomer(customer);
-
     }
 
     @Test

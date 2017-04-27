@@ -28,7 +28,9 @@
     <typeAliases>
         <typeAlias alias="User" type="bean.User"/>
         <typeAlias alias="Customer" type="bean.Customer"/>
-        <!--<package name="bean"></package>-->
+        <!--
+             <package name="bean"></package>     包下的所有类的别名为他们的类名
+        -->
     </typeAliases>
 
     <!-- 和spring整合后 environments配置将废除-->
