@@ -1,7 +1,6 @@
 package dao;
 
-import bean.Customer;
-import bean.User;
+import po.Customer;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -36,9 +35,9 @@ public class UserDaoTest {
         //第一个参数：映射文件中Statement的id，等于 = namespace + "." + Statement的id
         //第二个参数：指定和映射文件中所匹配的parameterType类型的参数
         //sqlSession.selectOne 结果与映射文件中所匹配的resultType类型的对象
-        User user = sqlSession.selectOne("User.find", 1);
+//        User user = sqlSession.selectOne("User.find", 1);
 
-        System.out.println(user);
+//        System.out.println(user);
         System.out.println(11);
 
         //释放资源
@@ -63,12 +62,12 @@ public class UserDaoTest {
         UserDao userDao = sqlSession.getMapper(UserDao.class);
 
         Customer customer = new Customer();
-        User user = new User();
-        user.setUsername("李亚男");
-        user.setPassword("nanyali");
+//        User user = new User();
+//        user.setUsername("李亚男");
+//        user.setPassword("nanyali");
 //        user.setUsername("小");
 //        user.setPassword("朱大明");
-        customer.setUser(user);
+//        customer.setUser(user);
 
         userDao.findUserByCustomer(customer);
     }

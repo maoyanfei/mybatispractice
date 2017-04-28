@@ -17,12 +17,12 @@
 
 -->
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dao.UserDao">
     <!--用到了User别名-->
-    <resultMap type="bean.User" id="UserResult">
+    <resultMap type="po.User" id="UserResult">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
@@ -37,12 +37,12 @@
         SELECT * FROM user WHERE username LIKE '%${value}%'<!--parameterType传输单个简单类型值,${}的sql语句拼接的方式括号中只能是value。-->
     </select>
 
-    <select id="findUserByCustomer" parameterType="bean.Customer" resultType="User">
+    <select id="findUserByCustomer" parameterType="po.Customer" resultType="User">
         SELECT * FROM USER WHERE username LIKE '%${user.username}%' AND password = #{user.password}
     </select>
 
     <!--自增主键返回-->
-    <insert id="insertUser" parameterType="bean.User">
+    <insert id="insertUser" parameterType="po.User">
         <!--selectKey将主键返回-->    <!--AFTER-->             <!--resultType:返回的主键是什么类型-->
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             <!--LAST_INSERT_ID():是mysql的函数，返回auto_increment自增列新记录id值。-->
@@ -53,7 +53,7 @@
     </insert>
 
     <!--非自增主键返回-->
-    <insert id="insertUsers" parameterType="bean.User">
+    <insert id="insertUsers" parameterType="po.User">
         <!--需要将表中的id字段类型改为String-->                 <!--BEFORE-->
         <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
             SELECT uuid()
@@ -66,7 +66,7 @@
         DELETE FROM user WHERE id = #{id}
     </delete>
 
-    <update id="updateUserById" parameterType="bean.User">
+    <update id="updateUserById" parameterType="po.User">
         UPDATE user SET
         username = #{username},
         password = #{password}

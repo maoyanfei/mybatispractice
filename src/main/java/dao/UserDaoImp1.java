@@ -1,9 +1,9 @@
 package dao;
 
-import bean.Customer;
-import bean.User;
+import po.Customer;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import po.User;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ import java.util.List;
  * @Author Nuc YongGuang Ji
  * Created by JiYongGuang on 2017/4/24.
  */
-public class UserDaoImp implements UserDao {
+public class UserDaoImp1 implements UserDao {
 
     private SqlSessionFactory sqlSessionFactory;
 
-    public UserDaoImp(SqlSessionFactory sqlSessionFactory) {
+    public UserDaoImp1(SqlSessionFactory sqlSessionFactory) {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
-    public UserDaoImp() {
+    public UserDaoImp1() {
     }
 
     public User findUserById(int id) {

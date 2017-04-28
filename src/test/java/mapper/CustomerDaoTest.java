@@ -1,7 +1,7 @@
-package dao;
+package mapper;
 
-import bean.Customer;
-import bean.User;
+import mapper.CustomerDao;
+import po.Customer;
 import db.Conn;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,6 +15,7 @@ import java.util.List;
  * Created by JiYongGuang on 2017/4/25.
  */
 public class CustomerDaoTest {
+
     @Test
     public void findCustomerByIdList() throws Exception {
         SqlSessionFactory sqlSessionFactory = Conn.getSqlSessionFactory();
@@ -41,11 +42,11 @@ public class CustomerDaoTest {
         CustomerDao customerDao = sqlSession.getMapper(CustomerDao.class);
 
         Customer customer = new Customer();
-        User user = new User();
-        user.setUsername("李亚男");
-        user.setPassword("liyanan");
+//        User user = new User();
+//        user.setUsername("李亚男");
+//        user.setPassword("liyanan");
 
-        customer.setUser(user);
+//        customer.setUser(user);
         Customer customerVariable = customerDao.findCustomerByCustomer(customer);
     }
 

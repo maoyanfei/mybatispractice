@@ -1,3 +1,5 @@
+package dao;
+
 import dao.UserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

@@ -1,10 +1,10 @@
-import bean.User;
-import dao.UserDao;
-import dao.UserDaoImp;
+package dao;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import po.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +54,7 @@ public class UserDaoImpTest {
         UserDao userDao = sqlSession.getMapper(UserDao.class);
         User user = new User();
         user.setUsername("朱小明");
-        user.setPassword("朱大明");
+//        user.setPassword("朱大明");
         userDao.insertUser(user);
         sqlSession.commit();
     }

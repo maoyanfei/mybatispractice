@@ -1,7 +1,6 @@
-package dao;
+package mapper;
 
-import bean.Customer;
-import bean.User;
+import po.Customer;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

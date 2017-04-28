@@ -1,11 +1,10 @@
 package dao;
 
-import bean.User;
 import db.Conn;
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
+import po.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,9 +13,9 @@ import java.util.List;
  * @Author Nuc YongGuang Ji
  * Created by JiYongGuang on 2017/4/24.
  */
-public class UserMapper {
+public class UserDaoImp2 {
 
-    private static final Logger logger = Logger.getLogger(UserMapper.class);
+    private static final Logger logger = Logger.getLogger(UserDaoImp2.class);
 
     private static SqlSessionFactory sqlSessionFactory = null;
 
@@ -33,7 +32,7 @@ public class UserMapper {
         logger.debug("UserMapper的findUserById方法===========================");
         SqlSession sqlSession = sqlSessionFactory.openSession();
         User user = sqlSession.selectOne("User.findUserById", 1);
-        System.out.println(user.getId() + "|" + user.getUsername() + "|" + user.getPassword());
+//        System.out.println(user.getId() + "|" + user.getUsername() + "|" + user.getPassword());
         sqlSession.close();
     }
 
@@ -53,7 +52,7 @@ public class UserMapper {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         User user = new User();
         user.setUsername("小明");
-        user.setPassword("xiaoming");
+//        user.setPassword("xiaoming");
         int count = sqlSession.insert("User.insertUser", user);
         sqlSession.commit();//对数据库有修改的操作需要提交事务
         System.out.println(count);//1
@@ -75,7 +74,7 @@ public class UserMapper {
         User user = new User();
         user.setId(4);
         user.setUsername("jyg");
-        user.setPassword("jiyongguang");
+//        user.setPassword("jiyongguang");
         int result = sqlSession.delete("User.updateUserById", user);
         sqlSession.commit();
         System.out.println(result);//1

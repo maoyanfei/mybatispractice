@@ -1,4 +1,4 @@
-package bean;
+package po;
 
 /**
  * @Author Nuc YongGuang Ji

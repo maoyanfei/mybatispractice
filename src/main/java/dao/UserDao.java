@@ -1,7 +1,7 @@
 package dao;
 
-import bean.Customer;
-import bean.User;
+import po.Customer;
+import po.User;
 
 import java.util.List;
 
