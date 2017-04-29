@@ -4,12 +4,11 @@ package po;
  * @Author Nuc YongGuang Ji
  * Created by JiYongGuang on 2017/4/28.
  */
-public class OrdersCustom extends Customer{//容纳查询出的User内容
+public class OrdersUser extends Customer{//容纳查询出的User内容的一个扩展过的容器类。<!--只负责查询出的多表内容的装载类-->
     //添加用户属性
     /*USER.username,
 	  USER.sex,
 	  USER.address */
-
     private String username;
     private String sex;
     private String address;

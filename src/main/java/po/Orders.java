@@ -20,7 +20,8 @@ public class Orders {
     private String note;
 
     //用户信息
-    private User user;
+    //Orders表若关联了其他表，那么需要在Orders中为该表配置实体类属性。同时在
+    private User user; // 后添加的属性，因为该类本属于父类可任意扩展自己属性。不受约束
 
     //订单明细
     private List<Orderdetail> orderdetails;

@@ -1,6 +1,8 @@
 package mapper;
 
-import po.OrdersCustom;
+import po.Orders;
+import po.OrdersUser;
+import po.User;
 
 import java.util.List;
 
@@ -10,6 +12,12 @@ import java.util.List;
  */
 public interface OrdersMapperCustom {
 
-    public List<OrdersCustom> findOrdersUser();
+    public List<OrdersUser> findOrdersUserResultType();
+
+    public List<Orders> findOrdersUserResultMap();
+
+    public List<Orders> findOrdersAndOrderdetailResultMap();
+
+    public List<User> findUserAndItemsResultMap();
 
 }

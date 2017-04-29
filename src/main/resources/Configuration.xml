@@ -31,6 +31,10 @@
         <!--
              <package napobean"></package>     包下的所有类的别名为他们的类名
         -->
+        <typeAlias type="po.Orders" alias="Orders"/>
+        <typeAlias type="po.OrdersUser" alias="OrdersUser"/>
+        <typeAlias type="po.Items" alias="Items"/>
+        <typeAlias type="po.Orderdetail" alias="Orderdetail"/>
     </typeAliases>
 
     <!-- 和spring整合后 environments配置将废除-->
