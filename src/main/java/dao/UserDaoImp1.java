@@ -43,6 +43,10 @@ public class UserDaoImp1 implements UserDao {
         sqlSession.close();
     }
 
+    public void updateUser(User user) {
+
+    }
+
     public List<User> findUserByUsername(String username) {
         return null;
     }

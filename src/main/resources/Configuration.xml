@@ -23,6 +23,9 @@
     <settings>
         <setting name="useGeneratedKeys" value="false"/>
         <setting name="useColumnLabel" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/><!--懒加载,按需加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="cacheEnabled" value="true"/><!--开启二级缓存-->
     </settings>
 
     <typeAliases>
@@ -35,6 +38,7 @@
         <typeAlias type="po.OrdersUser" alias="OrdersUser"/>
         <typeAlias type="po.Items" alias="Items"/>
         <typeAlias type="po.Orderdetail" alias="Orderdetail"/>
+        <!--<typeAlias type="hashMap" alias="java.util.HashMap"/>-->
     </typeAliases>
 
     <!-- 和spring整合后 environments配置将废除-->
@@ -56,7 +60,7 @@
     </environments>
 
     <mappers><!--mapper映射器-->
-        <mapper resource="dao/UserDao.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="dao/CustomerDao.xml"/>
         <mapper resource="mapper/OrdersMapperCustom.xml"/>
     </mappers>

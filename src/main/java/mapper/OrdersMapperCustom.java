@@ -20,4 +20,6 @@ public interface OrdersMapperCustom {
 
     public List<User> findUserAndItemsResultMap();
 
+    public List<Orders> findOrdersUserLazyLoading();
+
 }

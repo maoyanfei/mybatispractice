@@ -19,8 +19,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="dao.UserDao">
+
+    <cache/><!--开启该mapper下的二级缓存-->
+
     <!--用到了User别名-->
     <resultMap type="po.User" id="UserResult">
         <id column="id" jdbcType="INTEGER" property="id"/>
@@ -72,6 +74,10 @@
         password = #{password}
         WHERE
         id = #{id}
+    </update>
+
+    <update id="updateUser" parameterType="po.User">
+        UPDATE user SET username = #{username}
     </update>
 
 </mapper>

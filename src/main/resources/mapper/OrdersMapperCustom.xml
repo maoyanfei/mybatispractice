@@ -123,7 +123,34 @@
         </collection>
 
     </resultMap>
+    
+    <resultMap id="OrdersUserLazyLoadingResultMap" type="Orders">
+        <!--对订单信息映射-->
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="number" property="number"/>
+        <result column="createtime" property="createtime"/>
+        <result column="note" property="note"/>
 
+        <!-- 实现对用户信息进行延迟加载
+               select：指定延迟加载需要执行的statement的id（此处是根据user_id查询用户信息的statement）
+               要使用userMapper.xml中findUserById完成根据用户id(user_id)对用户信息的查询，因为Orders表中保存了User表的主键user_id.
+               如果findUserById不在本mapper中需要前边加namespace.statement的id
+
+               column：订单信息中关联用户信息查询的列，是user_id
+               关联查询的sql理解为：
+           SELECT orders.*,
+           (SELECT username FROM USER WHERE orders.user_id = user.id)username,
+           (SELECT sex FROM USER WHERE orders.user_id = user.id)sex
+           FROM orders -->
+        <!--
+            触发该resultMap的statement中sql语句查询的user_id字段对应该resultMap映射的实体Orders中的user属性，而user属性的实体是User类
+            当调用关于该user属性的方法的时候触发select语句。参数是查询出的column属性中的值
+        -->
+        <association  column="user_id" property="user" javaType="User" select="dao.UserDao.findUserById"/>
+
+    </resultMap>
+    
     <!--resultType方式关联映射查询Orders，User属性，利用java封装特性--><!--不必在Orders实体类中声明User属性-->
     <select id="findOrdersUserResultType" resultType="OrdersUser">
         <!--联合查询两表的内容，查询出的内容封装到一个表中-->
@@ -160,6 +187,11 @@
         items.name items_name,items.detail items_detail, items.price items_price
         FROM orders, USER, orderdetail, items
         WHERE orders.user_id = user.id AND orderdetail.orders_id = orders.id AND orderdetail.items_id = items.id
+    </select>
+
+    <!--查询订单并且关联查询用户信息，被关联的用户信息需要通过 association 延迟加载-->
+    <select id="findOrdersUserLazyLoading" resultMap="OrdersUserLazyLoadingResultMap">
+         select * from orders
     </select>
 
 </mapper>

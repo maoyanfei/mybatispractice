@@ -1,5 +1,6 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * @Author Nuc YongGuang Ji
  * Created by JiYongGuang on 2017/4/28.
  */
-public class Orders {
+public class Orders implements Serializable{//用到缓存的查询结果映射的pojo类需要实现Serializable借口
 
     private Integer id;
 

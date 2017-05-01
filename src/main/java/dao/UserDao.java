@@ -34,6 +34,11 @@ public interface UserDao {
     public void deleteUserById(int id);
 
     /**
+     * 更新用户
+     */
+    public void updateUser(User user);
+
+    /**
      * 根据用户姓名查询用户信息
      *
      * @param username
