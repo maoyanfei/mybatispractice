@@ -30,7 +30,8 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
 
-    <select id="findUserById" parameterType="int" resultMap="UserResult"><!--使用resultType需要数据库中的字段与bean实体类中的属性名一致-->
+    <!--useCache="false"对该statement禁用二级缓存-->
+    <select id="findUserById" parameterType="int" resultMap="UserResult" useCache="false"><!--使用resultType需要数据库中的字段与bean实体类中的属性名一致-->
     SELECT * FROM user WHERE id = #{id:INTEGER}
     </select>
 
@@ -44,7 +45,7 @@
     </select>
 
     <!--自增主键返回-->
-    <insert id="insertUser" parameterType="po.User">
+    <insert id="insertUser" parameterType="po.User" flushCache="true">
         <!--selectKey将主键返回-->    <!--AFTER-->             <!--resultType:返回的主键是什么类型-->
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             <!--LAST_INSERT_ID():是mysql的函数，返回auto_increment自增列新记录id值。-->
@@ -55,7 +56,7 @@
     </insert>
 
     <!--非自增主键返回-->
-    <insert id="insertUsers" parameterType="po.User">
+    <insert id="insertUsers" parameterType="po.User" flushCache="true">
         <!--需要将表中的id字段类型改为String-->                 <!--BEFORE-->
         <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
             SELECT uuid()
@@ -64,7 +65,8 @@
     </insert>
 
 
-    <delete id="deleteUserById" parameterType="int">
+    <!--flushCache="true"刷新缓存，对对数据库有修改操作的statement操作设置该属性，清空原有缓存，避免其他查询statement出现脏读情况-->
+    <delete id="deleteUserById" parameterType="int" flushCache="true">
         DELETE FROM user WHERE id = #{id}
     </delete>
 

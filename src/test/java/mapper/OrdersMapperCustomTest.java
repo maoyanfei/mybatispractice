@@ -134,7 +134,7 @@ public class OrdersMapperCustomTest {
     public void testCache2() throws Exception {
         SqlSession sqlSession1 = sqlSessionFactory.openSession();
         SqlSession sqlSession2 = sqlSessionFactory.openSession();
-        SqlSession sqlSession3 = sqlSessionFactory.openSession();
+//        SqlSession sqlSession3 = sqlSessionFactory.openSession();
 
         //创建UserDao对象,mybatis自动生成代理对象
         UserDao userDao = sqlSession1.getMapper(UserDao.class);
