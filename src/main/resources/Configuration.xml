@@ -20,6 +20,14 @@
 
 -->
 <configuration>
+
+
+    <!--加载配置文件-->
+    <properties resource="db.properties">
+        <!--在properties中还可以配置一些属性名和属性值-->
+        <!--<property name="" value=""/>   -->
+    </properties>
+
     <settings>
         <setting name="useGeneratedKeys" value="false"/>
         <setting name="useColumnLabel" value="true"/>
@@ -32,12 +40,14 @@
         <typeAlias alias="User" type="po.User"/>
         <typeAlias alias="Customer" type="po.Customer"/>
         <!--
-             <package napobean"></package>     包下的所有类的别名为他们的类名
+             <package napobean"></package>     包下的所有类的别名为他们的类名。
+             声明的优先顺序应该为自定义别名在包级别别名定义前定义
         -->
         <typeAlias type="po.Orders" alias="Orders"/>
         <typeAlias type="po.OrdersUser" alias="OrdersUser"/>
         <typeAlias type="po.Items" alias="Items"/>
         <typeAlias type="po.Orderdetail" alias="Orderdetail"/>
+        <package name="po"/>
         <!--<typeAlias type="hashMap" alias="java.util.HashMap"/>-->
     </typeAliases>
 

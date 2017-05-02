@@ -21,7 +21,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserDao">
 
-    <cache/><!--开启该mapper下的二级缓存-->
+    <!-- readOnly 可读写的缓存会返回缓存对象的拷贝（通过序列化）。这会慢一些，但是安全，因此默认是false。即缓存数据可以被修改 -->
+    <!-- eviction 缓存内容的收回策略 -->
+    <!--开启该mapper下的二级缓存-->
+    <!--
+    <cache flushInterval="60000" readOnly="true" size="512" eviction="FIFO"/>-->
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
 
     <!--用到了User别名-->
     <resultMap type="po.User" id="UserResult">
